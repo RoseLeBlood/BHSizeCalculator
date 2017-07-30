@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="BHTool.View.FlyOutInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BHTool.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="250">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29"/>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="33"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="BH Size CalculatorVersion 1.06" />
+        <Label Content="Programming by Anna-Sophia Schroeck" Grid.Row="1" />
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Label Content="Kontakt:" />
+            <Label >
+                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate">annasophia.schroeck(at)outlook.de</Hyperlink>
+            </Label>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <Label Content="Released under The MIT-License" />
+            <Label Content="for details see License.md"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

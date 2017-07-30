@@ -1,0 +1,103 @@
+﻿<controls:MetroWindow xmlns:View="clr-namespace:BHTool.View"  
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" x:Class="BHTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BHTool"
+        mc:Ignorable="d"
+        Title="BH Size Calculator 1.06" Height="272.979" Width="559.246" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        BorderThickness="1" GlowBrush="{DynamicResource AccentColorBrush}" ShowIconOnTitleBar="True">
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Click="cmdInfo_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20"
+                   Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_cupcake}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="" />
+                </StackPanel>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout Header="Info" Position="Right" Width="250" Name="flOutInfo">
+                <View:FlyOutInfo />
+            </controls:Flyout>
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
+    <Grid Background="{DynamicResource AccentColorBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="64"/>
+
+        </Grid.RowDefinitions>
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="197"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="33"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF5B4E4E" Offset="0"/>
+                    <GradientStop Color="#FF252424" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <StackPanel Grid.Row="2">
+                <Label Content="Brüstumfang:"  
+                       FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.RowSpan="2">
+                <Label Content="Unterbrustumfang."  
+                       FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            </StackPanel>
+            <Slider Style="{DynamicResource FlatSlider}" Grid.Column="1" VerticalContentAlignment="Center"
+                    VerticalAlignment="Center" ValueChanged="slUnterUmfang_ValueChanged"
+                    Minimum="58" Maximum="132" Name="slUnterUmfang" Height="12" Margin="0,6" SmallChange="1" Grid.Row="1" />
+            <Label x:Name="lblunu" Grid.Column="2" 
+                   Content="{Binding ElementName=slUnterUmfang, Path=Value}" ContentStringFormat="{}{0:#}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" Grid.Row="1" />
+
+            <Slider Grid.Row="2"  Grid.Column="1" VerticalContentAlignment="Center"
+                    ValueChanged="slUmfang_ValueChanged"
+                    VerticalAlignment="Center" Style="{DynamicResource FlatSlider}"
+                    Minimum="70" Maximum="158" Name="slUmfang" Height="12" Margin="0,6" SmallChange="1" />
+            <Label x:Name="lblob" Grid.Column="2" Grid.Row="2"
+                   Content="{Binding ElementName=slUmfang, Path=Value}" ContentStringFormat="{}{0:#}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+
+            <TextBlock Grid.Row="3" Foreground="White" Grid.ColumnSpan="2" Margin="6" TextWrapping="Wrap"><Run Text="1. stellen sie mit den Regler, neben den text unterbrustumfang, ihren unterbrustumfang in cm ein."/><LineBreak/><Run Text="2. stellen sie mit den Regler, neben den Text Brustumfang, ihren Brustumfang an der breitesten stelle "/><Run Text="ihrer Brust "/><Run Text="in cm ein. die Größe ihres BH sehen sie unten.  "/></TextBlock>
+
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition Width="156*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="BH Größe: " FontSize="22" FontFamily="Segoe UI Black"
+                   Foreground="White" 
+                   Background="#00000000" 
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center" />
+            <TextBlock Text="-- -" x:Name="txtbh" FontSize="22" FontFamily="Segoe UI Black"
+                       Grid.Column="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </Grid>
+</controls:MetroWindow>
